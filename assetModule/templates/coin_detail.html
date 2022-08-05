@@ -1,0 +1,333 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="py-lg-80 py-30 overflow-xh">
+    
+    <div class="container-lg">
+        <!-- Main content -->
+        <section class="content">
+            
+                <div class="col-12">
+                    <div class="box">
+                        <div class="box-header with-border">
+                        <span><a href="#"><i class="cc {{coin_detail.asset.symbol}}" title="BTC"></i></a></span>
+                        <h4 class="box-title">{{coin_detail.asset.name}}
+                        <small class="subtitle mt-0">{{coin_detail.asset.symbol}}</small></h4>
+                        </div>
+                        <div class="box-body">
+                         
+                            <a id ='selectvalue' value={{coin_detail.profile.symbol_tradingview}}>
+                            </a>
+                            
+                               
+                                    <!-- TradingView Widget BEGIN -->
+                                      <div  >
+                                          <div style=" height: 600px" id="tradingview_0ab99"></div>
+                                          <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                                          <script type="text/javascript">
+                                            var symbolvalue = document.getElementById("selectvalue").getAttribute("value")
+                                            
+                                          new TradingView.widget(
+                                          {
+                                            "width": 980,
+                                           "autosize":true,
+                                          "symbol": symbolvalue,
+                                          "interval": "D",
+                                          "timezone": "Etc/UTC",
+                                          "theme": "light",
+                                          "style": "1",
+                                          "locale": "en",
+                                          "toolbar_bg": "#f1f3f6",
+                                          "enable_publishing": false,
+                                          "allow_symbol_change": true,
+                                          "container_id": "tradingview_0ab99"
+                                            }
+                                                );
+                                                </script>
+                                      </div>
+                                 <!-- TradingView Widget END -->
+                                 <!-- TradingView Widget BEGIN -->
+                                    {% comment %} 
+                                            <script type="text/javascript">
+                                            var symbolvalue = document.getElementById("selectvalue").getAttribute("value")
+                                            
+                                          new TradingView.widget(
+                                          {
+                                            "width": 980,
+                                           "autosize":true,
+                                          "symbol": symbolvalue,
+                                          "interval": "D",
+                                          "timezone": "Etc/UTC",
+                                          "theme": "light",
+                                          "style": "1",
+                                          "locale": "en",
+                                          "toolbar_bg": "#f1f3f6",
+                                          "enable_publishing": false,
+                                          "allow_symbol_change": true,
+                                          "container_id": "tradingview_0ab99"
+                                      }
+                                          );
+                                          </script>
+                                    
+                                    
+                                        <div class="tradingview-widget-container">
+                                        <div id="tradingview_8a7eb"></div>
+                                        <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/NASDAQ-AAPL/" rel="noopener" target="_blank"><span class="blue-text">AAPL Chart</span></a> by TradingView</div>
+                                        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                                        <script type="text/javascript">
+                                        new TradingView.widget(
+                                        {
+                                        "autosize": true,
+                                        "symbol": "NASDAQ:AAPL",
+                                        "interval": "D",
+                                        "timezone": "Etc/UTC",
+                                        "theme": "light",
+                                        "style": "1",
+                                        "locale": "en",
+                                        "toolbar_bg": "#f1f3f6",
+                                        "enable_publishing": false,
+                                        "allow_symbol_change": true,
+                                        "container_id": "tradingview_8a7eb"
+                                    }
+                                        );
+                                        </script>
+                                    </div> {% endcomment %}
+                                    <!-- TradingView Widget END -->
+                                                               
+                                
+                            </div>           
+                           {% comment %} <div class="col-12 col-lg-2">
+                                <div class="box text-center b-1">
+                                    <div class="box-header with-border">
+                                        <h2 class="box-title ">Market Price </h2>
+                                    </div>
+                                <div class="box-body">
+                                    <div class="div-market-price">
+                                    <h1 class="mb-40">${{coin_detail.asset.price_usd|floatformat:"3g"}} <small>USD</small></h1>
+                                    <h1 class="mb-30">${{coin_detail.asset.price_btc|floatformat:"3g"}} <small>BTC</small></h1>
+                                    <h1 class="mb-50">${{coin_detail.asset.price_eth|floatformat:"3g"}} <small>ETH</small></h1>
+                                    <h4 class=" p-10">Last trade: {{coin_detail.asset.last_trade_at}}.</h4>
+                                    </div>
+                                </div>
+                                </div>
+                            </div> {% endcomment %}
+                        </div>
+
+                            <div class="box-header with-border bg-info-light">
+                            <h4 class="mb-0 fw-500 text-dark"><span class="mdi mdi-calendar me-10"></span> OVERVIEW</h4>
+                            </div>
+                            <div class="row ">
+                                <div class="popup-gallery p-15">
+                                    <h5 class="p-15 mb-0"><strong>Project details: </strong> {{coin_detail.profile.project_details}}</h5>
+                                </div>
+                            
+                            </div>
+                            <div class="row mb-30">
+                                <div class="col-12 col-lg-4">
+                                    <h5 class="p-15 mb-0"><strong>Tagline: </strong> {{coin_detail.profile.tagline}}</h5>
+                                    <h5 class="p-15 mb-0"><strong>Category: </strong> {{coin_detail.profile.category}}</h5>
+                                    
+                                </div>
+                                <div class="col-12 col-lg-4">
+                                    <h5 class="p-15 mb-0"><strong>Sector: </strong>{{coin_detail.profile.sector}}</h5>
+                                    <h5 class="p-15 mb-0"><strong>Inflation: </strong>{{coin_detail.asset.metrics.supply.annual_inflation_percent|floatformat:"3g"}}%</h5>
+                                    
+                                    
+                                </div>
+                                <div class="col-12 col-lg-4">
+                                    <h5 class="p-15 mb-0"><strong>high braken even multiple: </strong>{{coin_detail.asset.metrics.all_time_high.breakeven_multiple|floatformat:"3g"}}</h5>                                   
+                                </div>
+                            
+                            </div>
+                           <br>
+                           
+                            <div class="accordion " id="accordionExample"> 
+                                <div class=" box-header accordion-item">
+                                    <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapseOne">
+                                        <h4 class="mb-0 fw-500 text-dark"><span class="mdi mdi-image mr-10"></span> Roi by year</h4>
+                                    </button>
+                                    </h2>
+                                    <div id="collapse1" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="row">                                 
+                                            {%for key in coin_detail.asset.metrics.roi_by_year%} 
+                                                <div class="col-lg-3 col-12">
+                                                    <br>
+                                                    <div class="box ">                                       
+                                                        <div class="box-body">  
+                                                            <h4><strong>Year: {{key.0}} </strong> </h4>
+                                                            {%if key.1 < 0 %}                                                                                      
+                                                            <h4><a class="label label-danger">{{key.1|floatformat:"2g"}}%</a><h4>
+                                                            {%else%} 
+                                                            <h4><a class="label label-info">{{key.1|floatformat:"2g"}}%</a><h4>
+                                                            {%endif%}
+                                                        </div>
+                                                    
+                                                    </div>
+                                                
+                                                </div> 
+                                            {%endfor%}
+                                            {% comment %} {%for key in coin_detail.asset.roi_by_year%} 
+                                            <div class="col-lg-3 col-12">
+                                                <br>
+                                                <div class="box ">                                       
+                                                    <div class="box-body">  
+                                                        <h4><strong>Year: {{key.0}} </strong> </h4>
+                                                        {%if key.1 < 0 %}                                                                                      
+                                                        <h4><a class="label label-danger">{{key.1|floatformat:"2g"}}%</a><h4>
+                                                        {%else%} 
+                                                        <h4><a class="label label-info">{{key.1|floatformat:"2g"}}%</a><h4>
+                                                        {%endif%}
+                                                    </div>
+                                                
+                                                </div>
+                                            
+                                            </div>
+                                            {%endfor%}                           {% endcomment %}
+                                        </div> 
+                                    
+                                    </div>
+                                </div>
+                                <div class=" box-header accordion-item ">
+                                    <h2 class="accordion-header" id="headingTwo">
+                                        <button class="accordion-button collapsed"  data-bs-toggle="collapse" data-bs-target="#collapse" aria-expanded="false" aria-controls="collapseOne">
+                                            <h4 class="mb-0 fw-500 text-dark"><span class="mdi mdi-image mr-10"></span> Roadmap</h4>
+                                        </button>
+                                    </h2>
+                                    <div id="collapse" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+    
+                                        <div class="row">                                 
+                                           <br>
+                                            <div class="timeline timeline-line-dotted">
+                                                <br>
+                                                {%for roadmap in coin_detail.profile.roadmap%} 
+                                                <span class="timeline-label">
+                                                    <span class="badge badge-pill badge-gray badge-lg">{{roadmap.date}}</span>
+                                                </span>
+                                                <div class="timeline-item">
+                                                    <div class="timeline-point timeline-point-success">
+                                                        <i class="fa fa-money"></i>
+                                                    </div>
+                                                    <div class="timeline-event">
+                                                        <div class="timeline-heading">
+                                                            <h4 class="timeline-title"> <strong>{{roadmap.title}}</strong></h4>
+                                                           
+                                                        </div>
+                                                        <div class="timeline-body">
+                                                            {{roadmap.details}}
+                                                            <!-- Modal -->
+                                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                
+                                                                <div class="modal-dialog modal-dialog-centered">
+                                                                <div class="modal-content">                                                           
+                                                                    <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">{{roadmap.title}} details</h5>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        {{roadmap.details}}ss{{roadmap.title}}
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                   
+                                                                   
+                                                                    </div>
+                                                                </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {%endfor%}
+                                                <span class="timeline-label">
+                                                    <a  class="btn btn-dark btn-rounded" title="end...">
+                                                        <i class="fa fa-fw fa-times" ></i>
+                                                    </a>
+                                                </span>
+                                            </div>
+                                           
+                                          
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                </div>                             
+                                <div class=" box-header accordion-item">
+                                    <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                        <h4 class="mb-0 fw-500 text-dark"><span class="mdi mdi-image mr-10"></span> Economics</h4>
+                                    </button>
+                                    </h2>
+                                    <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="row mb-30">
+                                            <div class="row ">
+                                                <div class="popup-gallery p-15">
+                                                    <h5 class="p-15 mb-0 "><strong>Launch details: </strong> {{coin_detail.profile.economics_launchDetails}}</h5>
+                                                </div>                                       
+                                            </div>
+                                            <div class="col-12 col-lg-4">
+                                                <h5 class="p-15 mb-0"><strong>Token name: </strong>{{coin_detail.profile.economics.token.token_name}}</h5>
+                                                <h5 class="p-15 mb-0"><strong>Token usage:</strong> {{coin_detail.profile.economics.token.token_usage}}</h5>                                           
+                                            </div>
+                                            <div class="col-12 col-lg-8">
+                                                <h5 class="p-15 mb-0"><strong>Token type: </strong> {{coin_detail.profile.economics.token.token_type}}</h5>
+                                                <h5 class="p-15 mb-0"><strong>Launch style:</strong>  {{coin_detail.profile.economics.launch.general.launch_style}}</h5>                                        
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" box-header accordion-item">
+                                    <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseOne">
+                                        <h4 class="mb-0 fw-500 text-dark"><span class="mdi mdi-image mr-10"></span> Regulation</h4>
+                                    </button>
+                                    </h2>
+                                    <div id="collapseTwo" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="popup-gallery p-15">
+                                            <h5 class="p-15 mb-0">{{coin_detail.profile.regulatory_details}}</h5>
+            
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                                <div class=" box-header accordion-item">
+                                    <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseOne">
+                                        <h4 class="mb-0 fw-500 text-dark"><span class="mdi mdi-image mr-10"></span> Gobernance</h4>
+                                    </button>
+                                    </h2>
+                                  <div id="collapseThree" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="popup-gallery p-15">
+                                            <h5 class="p-15 mb-0">{{coin_detail.profile.governance}}</h5>
+            
+                                        </div>
+                                  </div>
+                                </div>
+                                <br>
+                                <div class="box-header accordion-item">
+                                  <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseTwo">
+                                        <h4 class="mb-0 fw-500 text-dark"><span class="mdi mdi-image mr-10"></span> Technology</h4>
+                                    </button>
+                                  </h2>
+                                  <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                    <div class="popup-gallery p-15">
+                                        <h5 class="p-15 mb-0">{{coin_detail.profile.technology}}</h5>
+        
+                                    </div>
+                                  </div>
+                                </div>
+                               
+                           
+                        </div>                
+                    </div>
+                </div>		  
+              
+        </section>
+        <!-- /.content -->
+
+</section>
+
+
+
+{%endblock%}

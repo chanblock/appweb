@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+	  
+<section class="bt-1 bb-1 overflow-xh" data-aos="fade-up">
+  <div class="row">
+      <div class="col-12">
+          <div class="box mb-0">
+            <div class="box-body">
+                <!-- TradingView Widget BEGIN -->
+                  <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+                    {
+                    "symbols": [
+                      {
+                        "proName": "BITSTAMP:BTCUSD",
+                        "title": "BTC/USD"
+                      },
+                      {
+                        "proName": "BITSTAMP:ETHUSD",
+                        "title": "ETH/USD"
+                      },
+                      {
+                        "description": "DOGEU/USDT",
+                        "proName": "BINANCE:DOGEUSDT"
+                      },
+                      {
+                        "description": "BTC/EUR",
+                        "proName": "COINBASE:BTCEUR"
+                      },
+                      {
+                        "description": "XRP/USD",
+                        "proName": "BITFINEX:XRPUSD"
+                      },
+                      {
+                        "description": "LINK/USDT",
+                        "proName": "BINANCE:LINKUSDT"
+                      },
+                      {
+                        "description": "ADAU/USDT",
+                        "proName": "BINANCE:ADAUSDT"
+                      }
+                    ],
+                    "showSymbolLogo": true,
+                    "colorTheme": "light",
+                    "isTransparent": true,
+                    "displayMode": "adaptive",
+                    "locale": "in"
+                  }
+                    </script>
+                  </div>
+                  <!-- TradingView Widget END -->
+            </div>
+        </div>
+      </div>
+  </div>
+</section>
+
+
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong class="text-dark">{{ message }}</strong>
+</div>
+{% endfor %}
+{% endif %}
+<section class="py-lg-80 py-30 overflow-xh">
+ 
+  <div class="container">
+    <div class="row justify-content-center">
+              <div class="row">
+                  <div class="col-12">
+                      <div class="box">
+                            <div class="box-header with-border">
+                              <h4 class="box-title">Indicadores de Comportamiento </h4>
+                            </div>
+                            <div class="box-body">
+                                <div class="table-responsive">
+                                  <table id="example1" class="table table-striped">
+                                          <thead>
+                                            <tr role="row">
+                                            <th class="text-right">Rank</th>
+                                            <th class="text-right">Crypto Moneda</th>
+                                            <th class="text-right">Precio</th>
+                                            <th class="text-right">MarketCap(M)</th>
+                                            <th class="text-right">ATH</th>
+                                            <th class="text-right">ATH%</th>                         
+                                            <th class="text-right">Price Low</th>                                           
+                                            <th class="text-right">Since low%</th>
+                                            <th class="text-right">Cambio% (24H)</th>
+                                            <th class="text-right">Cambio% (7D)</th>
+                                         
+                                            
+                                           
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            {% for asset in assets %}
+                                          
+                                              <tr>
+                                                <td>{{asset.metrics.marketcap.rank}}</td>
+                                                <td>
+                                                   <small><a href="/coin_detail/{{asset.symbol}}/{{asset.date}}" class="hover-warning">{{asset.name}}</a></small>   
+                                                </td>
+                                                  <td>${{asset.metrics.market_data.price_usd|floatformat:"3g"}}</td>
+                                                  <td>${{asset.metrics.marketcap.current_marketcap_usd|floatformat:"2g"}}</td>
+                                                  <td>${{asset.metrics.all_time_high.price|floatformat:"2g"}}</td>                                                                                                                                                 
+                                                  <td>-{{asset.metrics.all_time_high.percent_down|floatformat:"1g"}}%</td>                                                      
+                                                  <td>${{asset.metrics.cycle_low.price|floatformat:"2g"}}</td>
+                                                  <td>{{asset.metrics.cycle_low.percent_up|floatformat:"2g"}}%</td>
+                                                 
+                                                  {%if asset.metrics.market_data.percent_change_usd_last_24_hours > 0 %}                                                                       
+                                                  <td class="no-wrap text-right"><label class="label label-success"><i class="fa fa-chevron-up"></i>{{asset.metrics.market_data.percent_change_usd_last_24_hours|floatformat:"2g"}}</label></td>
+                                                  {% else %}            
+                                                  <td class="no-wrap text-right"><label class="label label-danger"><i class="fa fa-chevron-down"></i>{{asset.metrics.market_data.percent_change_usd_last_24_hours|floatformat:"2g"}}</label></td>
+                                                  {%endif%}
+                                                  {%if asset.change7 > 0 %}
+                                                  <td class="no-wrap text-right"><label class="label label-success"><i class="fa fa-chevron-up"></i>{{asset.change7|floatformat:"2g"}}%</label></td>
+                                                  {% else %}            
+                                                  <td class="no-wrap text-right"><label class="label label-danger"><i class="fa fa-chevron-down"></i>{{asset.change7|floatformat:"2g"}}%</label></td>
+                                                  {%endif%}
+                                                
+                                              </tr>
+                                            {% endfor %} 
+
+                                          </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                          <!-- /.box-body -->
+                        </div>
+                  </div>
+              </div>
+    
+    </div>
+  </div>
+
+  
+</section>
+	
+  
+{% endblock %}

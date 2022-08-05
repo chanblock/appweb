@@ -1,0 +1,179 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="bt-1 bb-1 overflow-xh" data-aos="fade-up">
+    <div class="row">
+        <div class="col-12">
+            <div class="box mb-0">
+              <div class="box-body">
+                  <!-- TradingView Widget BEGIN -->
+                    <div class="tradingview-widget-container">
+                      <div class="tradingview-widget-container__widget"></div>
+                      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+                      {
+                      "symbols": [
+                        {
+                          "proName": "BITSTAMP:BTCUSD",
+                          "title": "BTC/USD"
+                        },
+                        {
+                          "proName": "BITSTAMP:ETHUSD",
+                          "title": "ETH/USD"
+                        },
+                        {
+                          "description": "DOGEU/USDT",
+                          "proName": "BINANCE:DOGEUSDT"
+                        },
+                        {
+                          "description": "BTC/EUR",
+                          "proName": "COINBASE:BTCEUR"
+                        },
+                        {
+                          "description": "XRP/USD",
+                          "proName": "BITFINEX:XRPUSD"
+                        },
+                        {
+                          "description": "LINK/USDT",
+                          "proName": "BINANCE:LINKUSDT"
+                        },
+                        {
+                          "description": "ADAU/USDT",
+                          "proName": "BINANCE:ADAUSDT"
+                        }
+                      ],
+                      "showSymbolLogo": true,
+                      "colorTheme": "light",
+                      "isTransparent": true,
+                      "displayMode": "adaptive",
+                      "locale": "in"
+                    }
+                      </script>
+                    </div>
+                    <!-- TradingView Widget END -->
+              </div>
+          </div>
+        </div>
+    </div>
+  </section>
+<section class="py-lg-80 py-30 overflow-xh">
+    <div class="row">
+        <div class="col-xl-8 col-12">
+            <div class="box">
+                <div class="box-header with-border">
+                  <h4 class="box-title">Comportamiento en el Tiempo</h4>
+                </div>
+                <div class="box-body">
+                  <!-- TradingView Widget BEGIN -->
+                    <div class="tradingview-widget-container">
+                        <div id="tradingview_0ab99"></div>
+                        <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/BTCUSD/?exchange=BITSTAMP" rel="noopener" target="_blank"><span class="blue-text">BTCUSD Chart</span></a> by TradingView</div>
+                        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                        <script type="text/javascript">
+                        new TradingView.widget(
+                        {
+                        
+                        "symbol": "BITSTAMP:BTCUSD",
+                        "interval": "D",
+                        "timezone": "Etc/UTC",
+                        "theme": "light",
+                        "style": "1",
+                        "locale": "en",
+                        "toolbar_bg": "#f1f3f6",
+                        "enable_publishing": false,
+                        "allow_symbol_change": true,
+                        "container_id": "tradingview_0ab99"
+                    }
+                        );
+                        </script>
+                    </div>
+  <!-- TradingView Widget END -->
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-12">
+            <div class="box">
+                <div class="box-header with-border">
+                  <h4 class="box-title">Resumen de Mercado</h4>
+                </div>
+                <div class="box-body">
+                    <!-- TradingView Widget BEGIN -->
+                    <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/futures/" rel="noopener" target="_blank"><span class="blue-text">Futures</span></a>, <a href="https://www.tradingview.com/markets/bonds/" rel="noopener" target="_blank"><span class="blue-text">Bonds</span></a> <span class="blue-text">and</span> <a href="https://www.tradingview.com/markets/currencies/" rel="noopener" target="_blank"><span class="blue-text">Forex</span></a> by TradingView</div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+                        {
+                            "colorTheme": "light",
+                            "dateRange": "12M",
+                            "showChart": true,
+                            "locale": "en",
+                            "largeChartUrl": "",
+                            "isTransparent": false,
+                            "showSymbolLogo": true,
+                            "showFloatingTooltip": false,
+                            "width": "400",
+                            "height": "660",
+                            "plotLineColorGrowing": "rgba(41, 98, 255, 1)",
+                            "plotLineColorFalling": "rgba(41, 98, 255, 1)",
+                            "gridLineColor": "rgba(240, 243, 250, 0)",
+                            "scaleFontColor": "rgba(120, 123, 134, 1)",
+                            "belowLineFillColorGrowing": "rgba(41, 98, 255, 0.12)",
+                            "belowLineFillColorFalling": "rgba(41, 98, 255, 0.12)",
+                            "belowLineFillColorGrowingBottom": "rgba(41, 98, 255, 0)",
+                            "belowLineFillColorFallingBottom": "rgba(41, 98, 255, 0)",
+                            "symbolActiveColor": "rgba(41, 98, 255, 0.12)",
+                            "tabs": [
+                            
+                                {
+                                "title": "Forex",
+                                "symbols": [
+                                {
+                                    "s": "BINANCE:BTCUSDT"
+                                },
+                                {
+                                    "s": "COINBASE:BTCUSD"
+                                },
+                                {
+                                    "s": "BINANCE:ETHUSDT"
+                                },
+                                {
+                                    "s": "BINANCE:MATICUSDT"
+                                }
+                                ],
+                                "originalTitle": "Forex"
+                                }
+                            ]
+                        }
+                    </script>
+                </div>
+                <!-- TradingView Widget END -->
+                
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="tradingview-widget-container">
+      <div id="tradingview_8a7eb"></div>
+      <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/BTCUSD/?exchange=BITSTAMP" rel="noopener" target="_blank"><span class="blue-text">BTCUSD Chart</span></a> by TradingView</div>
+      <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+      <script type="text/javascript">
+      new TradingView.widget(
+      {
+      
+      "symbol": "BITSTAMP:BTCUSD",
+      "interval": "D",
+      "timezone": "Etc/UTC",
+      "theme": "light",
+      "style": "1",
+      "locale": "en",
+      "toolbar_bg": "#f1f3f6",
+      "enable_publishing": false,
+      "allow_symbol_change": true,
+      "container_id": "tradingview_0ab99"
+  }
+      );
+      </script>
+  </div>
+<!-- TradingView Widget END -->
+</section>
+{%endblock%}
