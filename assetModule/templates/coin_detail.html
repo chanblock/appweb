@@ -119,8 +119,8 @@
                             </div>
                             <div class="row ">
                                 <div class="popup-gallery p-15">
-                                    <h5 class="p-15 mb-0"><strong>Project details: </strong> {{coin_detail.profile.project_details}}</h5>
-                                </div>
+                                    <h5 class="p-15 mb-0" style="text-align: justify"><strong>Project details: </strong > <p> {{coin_detail.profile.project_details|linebreaks}}</h5>
+                                    </div>
                             
                             </div>
                             <div class="row mb-30">
@@ -214,8 +214,8 @@
                                                             <h4 class="timeline-title"> <strong>{{roadmap.title}}</strong></h4>
                                                            
                                                         </div>
-                                                        <div class="timeline-body">
-                                                            {{roadmap.details}}
+                                                        <div class="timeline-body" style="text-align: justify">
+                                                            {{roadmap.details|linebreaks}}
                                                             <!-- Modal -->
                                                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                 
@@ -266,12 +266,12 @@
                                                 </div>                                       
                                             </div>
                                             <div class="col-12 col-lg-4">
-                                                <h5 class="p-15 mb-0"><strong>Token name: </strong>{{coin_detail.profile.economics.token.token_name}}</h5>
-                                                <h5 class="p-15 mb-0"><strong>Token usage:</strong> {{coin_detail.profile.economics.token.token_usage}}</h5>                                           
+                                                <h5 class="p-15 mb-0" style="text-align: justify"><strong>Token name: </strong>{{coin_detail.profile.economics.token.token_name|linebreaks}}</h5>
+                                                <h5 class="p-15 mb-0"><strong>Token usage:</strong style="text-align: justify"> {{coin_detail.profile.economics.token.token_usage|linebreaks}}</h5>                                           
                                             </div>
                                             <div class="col-12 col-lg-8">
-                                                <h5 class="p-15 mb-0"><strong>Token type: </strong> {{coin_detail.profile.economics.token.token_type}}</h5>
-                                                <h5 class="p-15 mb-0"><strong>Launch style:</strong>  {{coin_detail.profile.economics.launch.general.launch_style}}</h5>                                        
+                                                <h5 class="p-15 mb-0"><strong>Token type: </strong> {{coin_detail.profile.economics.token.token_type|linebreaks}}</h5>
+                                                <h5 class="p-15 mb-0"><strong>Launch style:</strong>  {{coin_detail.profile.economics.launch.general.launch_style|linebreaks}}</h5>                                        
                                             </div>
                                         </div>
                                     </div>
@@ -284,7 +284,7 @@
                                     </h2>
                                     <div id="collapseTwo" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                         <div class="popup-gallery p-15">
-                                            <h5 class="p-15 mb-0">{{coin_detail.profile.regulatory_details}}</h5>
+                                            <h5 class="p-15 mb-0 " style="text-align: justify" >{{coin_detail.profile.regulatory_details|linebreaks}}</h5>
             
                                         </div>
                                     </div>
@@ -298,7 +298,7 @@
                                     </h2>
                                   <div id="collapseThree" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                         <div class="popup-gallery p-15">
-                                            <h5 class="p-15 mb-0">{{coin_detail.profile.governance}}</h5>
+                                            <h5 class="p-15 mb-0" style="text-align: justify">{{coin_detail.profile.governance|linebreaks}}</h5>
             
                                         </div>
                                   </div>
@@ -312,7 +312,7 @@
                                   </h2>
                                   <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                     <div class="popup-gallery p-15">
-                                        <h5 class="p-15 mb-0">{{coin_detail.profile.technology}}</h5>
+                                        <h5 class="p-15 mb-0" style="text-align: justify">{{coin_detail.profile.technology|linebreaks}}</h5>
         
                                     </div>
                                   </div>
