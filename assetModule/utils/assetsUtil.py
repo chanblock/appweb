@@ -96,6 +96,79 @@ def format_date(roadmap):
          iterator['date']= dto
     
     return roadmap
+def  grafica(symbol):
+    
+    coinmetric= client.coinmetric[symbol]    
+    getvalues= list(coinmetric.find({},{"_id":0, "time":1,"AdrActCnt":1}))
+    date1=[]
+    refEth=[]
+    for value in getvalues:
+        auxdate= datetime.fromisoformat(value['time'])
+        date1.append(auxdate)
+        value1= float(value['AdrActCnt'])/1000000
+        refEth.append(value1)
+           
+    # GRAFICA DATE
+    plot = figure(x_axis_type="datetime", 
+    title="Adresses Active Acount",
+    sizing_mode="stretch_width",
+    x_range=(date1[0],date1[-1]),
+    tools=[HoverTool(
+    formatters={
+        '@x': 'datetime', # use 'datetime' formatter for '@date' field
+    }
+    ),
+    BoxZoomTool(),
+    WheelZoomTool(dimensions = 'height'),
+    WheelZoomTool(dimensions = 'width'),
+    ResetTool(),
+    PanTool(),
+    ],
+    tooltips="Date: @x{%F}, Act count: @y M",
+    )
+    plot.xaxis.axis_label = 'Date'
+    plot.yaxis.axis_label = 'Active Acount (M)'
+    plot.grid.grid_line_alpha = 0
+
+    yaxis = LinearAxis(minor_tick_line_color=None,
+    axis_label = "Eje Y",
+    axis_label_text_font_style = 'normal',
+    name="yaxis")
+    plot.add_layout(yaxis, 'right')
+  
+    plot.line(date1, refEth, legend_label=symbol,line_color = '#2B3040')
+    # # set up RangeSlider
+    range_slider = DateRangeSlider(
+        title="Date range",
+        start=date(2017, 1, 1),
+        end=date(2020, 1, 1),
+        step=1,
+        value=(plot.x_range.start, plot.x_range.end),
+    )
+    range_slider.js_link("value", plot.x_range, "start", attr_selector=0)
+    range_slider.js_link("value", plot.x_range, "end", attr_selector=1)
+    # # create layout
+    layout1 = layout(
+        [
+            [range_slider],
+            [plot],
+            
+        ],
+        sizing_mode='stretch_width',
+        max_width=1450,
+       
+    )
+    script, div = components(layout1)
+    
+    context= {
+       'script': script,
+       'div':div 
+
+    }
+    
+    return context   
+
+
 
     
 
