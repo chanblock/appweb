@@ -16,9 +16,16 @@ def home(request):
   return render(request, 'home.html')
 
 def graficos(request):
-  return render(request, 'graficos.html')
+  context= assetsUtil.grafica('btc')
+  return render(request, 'graficos.html', context)
 
-def coin_detail(request,symbol,date):
-  coin_detail= assetsUtil.coin_detail(symbol,date)
+def coin_detail(request,symbol):
+  coin_detail= assetsUtil.coin_detail(symbol)
   return render(request, 'coin_detail.html',{'coin_detail': coin_detail})
   #return HttpResponse(JsonResponse(coin_detail))
+
+
+def graficos1(request,symbol):
+  context= assetsUtil.grafica(symbol)
+  print(context.get('div'))
+  return HttpResponse({context.get('div'),context.get('script')})
