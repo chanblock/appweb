@@ -2,8 +2,31 @@
 {% load static %}
 {% block content %}
 <section class="bt-1 bb-1 overflow-xh" data-aos="fade-up">
+
+  
+      <div class="container">
+
+          <div class="row">          
+            <div class="col-2">
+              <button  class="btn btn-link" type="button" >Assets</button>
+            </div>
+            <div class="col-3">
+              <button id="assets"  class="btn btn-link" type="button" >USDT</button>
+            </div>
+          </div>
+        
+          <div class="col-12">          
+            <div class="col-3">
+              <button id="metrics"  class="btn btn-link" type="button">Metrics</button>
+            </div>
+            <div class="col-9">
+            </div>
+          </div>
+      </div>
     <div class="row">
+      
         <div class="col-12">
+{% comment %} 
             <div class="box mb-0">
               <div class="box-body">
                   <!-- TradingView Widget BEGIN -->
@@ -51,11 +74,27 @@
                     </div>
                     <!-- TradingView Widget END -->
               </div>
-          </div>
+          
+          
+            </div>
+         {% endcomment %}
+         
+        <div id="plot-content1"  class="container">
+          {{div|safe}}          
+          {{script|safe}}
+        </div>
+        <br>
+        <div id="plot-content" class="container">
+          {{div_bok|safe}}
+          {{script_bok|safe}}
+        </div>
+
+        <br>
         </div>
     </div>
   </section>
-<section class="py-lg-80 py-30 overflow-xh">
+
+{% comment %} <section class="py-lg-80 py-30 overflow-xh">
     <div class="row">
         <div class="col-xl-8 col-12">
             <div class="box">
@@ -174,6 +213,19 @@
       );
       </script>
   </div>
-<!-- TradingView Widget END -->
+<!-- TradingView Widget END --> {% endcomment %}
+
+
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.0.min.js"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.0.min.js"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.4.0.min.js"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-gl-2.4.0.min.js"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-2.4.0.min.js"
+        crossorigin="anonymous"></script>
+
 </section>
 {%endblock%}
