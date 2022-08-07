@@ -3,6 +3,11 @@ from types import NoneType
 from django.utils.html import strip_tags
 from pymongo import MongoClient
 from datetime import datetime
+from bokeh.embed import components
+import numpy as np
+from bokeh.layouts import layout
+from bokeh.models import HoverTool,DateRangeSlider,BoxZoomTool,WheelZoomTool,ResetTool,PanTool,LinearAxis
+from bokeh.plotting import figure, show
 
 client = MongoClient()
 db = client.messari

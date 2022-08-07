@@ -9,6 +9,7 @@ urlpatterns = [
     path('indicadores', views.getAssets, name='indicadores'),
     path('graficos', views.graficos, name='graficos'),
     path('coin_detail/<symbol>/<date>', views.coin_detail, name='coin_detalle'),
+    path('graficos1/<symbol>', views.graficos1, name='graficos1'),
 
     
 ]
