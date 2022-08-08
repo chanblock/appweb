@@ -17,16 +17,20 @@ client = MongoClient()
 db = client.messari
 
 def getAssets():
-    readAssets = db.assets.find({},{"_id":0,"timestamp":0}).sort("_id",-1).limit(1)
-    
-    listAssets=list(readAssets)
-    listMetric = []
-    for s in listAssets:            
-        for x in s:                              
-                listMetric.append(s[x])                                                 
-                s[x]['metrics']['market_data']['last_trade_at']= datetime.strptime(s[x]['metrics']['market_data']['last_trade_at'], "%Y-%m-%dT%H:%M:%SZ").date()                                                        
-                s[x]['metrics']['marketcap']['current_marketcap_usd']=s[x]['metrics']['marketcap']['current_marketcap_usd']/pow(10,6)
-                #print(deltaChange(s[x]['symbol']),'getassets')
+     # find by date
+    timestamp = str(datetime.now().date())
+    list_assets =list (db.prueba1.find({'date':timestamp},{"_id":0}))    
+    if len(list_assets)==0:
+        # find by last record
+        last_record = db.prueba1.find({},{"_id":0,"date":1}).sort("_id",-1).limit(1)
+        last_record=list(last_record)[0]['date']
+        list_assets = list(db.prueba1.find({'date':last_record},{"_id":0}))
+    for assets in list_assets:
+        assets['metrics']['marketcap']['current_marketcap_usd']=assets['metrics']['marketcap']['current_marketcap_usd']/pow(10,6)
+                                               
+                # s[x]['metrics']['market_data']['last_trade_at']= datetime.strptime(s[x]['metrics']['market_data']['last_trade_at'], "%Y-%m-%dT%H:%M:%SZ").date()                                                        
+                # s[x]['metrics']['marketcap']['current_marketcap_usd']=s[x]['metrics']['marketcap']['current_marketcap_usd']/pow(10,6)
+                # #print(deltaChange(s[x]['symbol']),'getassets')
                 # s[x]['change7']=deltaChange(s[x]['symbol'])
                 
                 # if s[x]['metrics']['market_data']['percent_change_usd_last_24_hours'] :
@@ -37,7 +41,7 @@ def getAssets():
               
                 #print(type(s[x]['change7']),'sssssss', type(s[x]['metrics']['market_data']['percent_change_usd_last_24_hours']))
                 
-    return listMetric
+    return list_assets
 
 def deltaChange(symbol1):
     valor=0
@@ -84,7 +88,8 @@ def coin_detail(symbol):
     for key , value in zip(asset_detail['metrics']['roi_by_year'].keys(),asset_detail['metrics']['roi_by_year'].values()):       
         roi_detail.append([key[:4] , value])
     
-    asset_detail['roi_by_year']=roi_detail 
+    asset_detail['roi_by_year']=roi_detail
+    print(asset_detail['roi_by_year']) 
     #generacion de un list()para el tratamiento de los datos del profile
     profile_detail=list()
     for doc in profile:  
