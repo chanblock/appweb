@@ -78,7 +78,7 @@
                             </div>
                             <div class="box-body">
                                 <div class="table-responsive">
-                                  <table id="example1" class="table table-striped">
+                                  <table id="example2" class="table table-striped">
                                           <thead>
                                             <tr role="row">
                                             <th class="text-right">Rank</th>
@@ -102,7 +102,7 @@
                                               <tr>
                                                 <td>{{asset.metrics.marketcap.rank}}</td>
                                                 <td>
-                                                   <small><a href="/coin_detail/{{asset.symbol}}/{{asset.date}}" class="hover-warning">{{asset.name}}</a></small>   
+                                                   <small><a href="/coin_detail/{{asset.symbol}}" class="hover-warning">{{asset.name}}</a></small>   
                                                 </td>
                                                   <td>${{asset.metrics.market_data.price_usd|floatformat:"3g"}}</td>
                                                   <td>${{asset.metrics.marketcap.current_marketcap_usd|floatformat:"2g"}}</td>
